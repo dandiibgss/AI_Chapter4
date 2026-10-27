@@ -41,6 +41,9 @@ image_size = sz
 while True:
 
         ret, cam_frame = camera.read()
+        if not ret:
+               print('Webcam tidak terbaca')
+               break
         frame= cv2.resize(cam_frame, (image_size, image_size))
         image = np.asarray(frame)
         image = np.expand_dims(image, 0)

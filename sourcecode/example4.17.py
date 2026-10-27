@@ -83,8 +83,9 @@ def plot_feature_maps(feature_maps):
 # ===================== PART 6 =====================
 from keras.applications.vgg19 import VGG19
 from keras.applications.vgg19 import preprocess_input
-from keras.preprocessing.image import load_img
-from keras.preprocessing.image import img_to_array
+from keras.utils import load_img
+from keras.utils import img_to_array
+import os
 from keras.models import Model
 import matplotlib.pyplot as plt
 from numpy import expand_dims
@@ -97,7 +98,7 @@ model = Model(inputs=model.inputs, outputs=model.layers[n].output)
 model.summary()
 
 # load the image with the required shape
-img = load_img('Elephant.jpg', target_size=(224, 224))
+img = load_img(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Elephant.jpg'), target_size=(224, 224))
 # convert the image to an array
 img = img_to_array(img)
 # expand dimensions so that it represents a single 'sample'

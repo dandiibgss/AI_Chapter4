@@ -8,7 +8,7 @@ model.add(SimpleRNN(50, input_shape = (49,1), return_sequences = False))
 model.add(Dense(46))
 model.add(Activation('softmax'))
 
-adam = optimizers.Adam(lr = 0.001)
+adam = optimizers.Adam(learning_rate = 0.001)
 model.compile(loss = 'categorical_crossentropy', optimizer = adam,
 metrics = ['accuracy'])
 print(model.summary())

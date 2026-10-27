@@ -2,9 +2,9 @@
 # Simple CNN for the MNIST Dataset
 from keras.datasets import mnist
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers.convolutional import Conv2D, MaxPooling2D
-from keras.utils import np_utils
+from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
+from keras.utils import to_categorical
+import matplotlib.pyplot as plt
 # load data
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 # plot 4 images as gray scale
@@ -24,8 +24,8 @@ X_test = X_test.reshape((X_test.shape[0], 28, 28, 1)).astype('float32')
 X_train = X_train / 255
 X_test = X_test / 255
 # one hot encode outputs
-y_train = np_utils.to_categorical(y_train)
-y_test = np_utils.to_categorical(y_test)
+y_train = to_categorical(y_train)
+y_test = to_categorical(y_test)
 num_classes = y_test.shape[1]
 # Create model
 model = Sequential()

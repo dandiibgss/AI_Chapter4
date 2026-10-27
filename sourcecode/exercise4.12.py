@@ -28,6 +28,9 @@ image_size = 224
 while camera.isOpened():
 
        ok, cam_frame = camera.read()
+       if not ok:
+              print('Webcam tidak terbaca')
+              break
 
        frame= cv2.resize(cam_frame, (image_size, image_size))
        numpy_image = img_to_array(frame)

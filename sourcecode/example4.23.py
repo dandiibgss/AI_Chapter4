@@ -3,6 +3,8 @@
 # pip install transformers
 # https://aka.ms/vs/16/release/vc_redist.x64.exe
 
+import os
+os.environ["USE_TF"] = "0"
 from transformers import pipeline
 classifier = pipeline('sentiment-analysis')
-classifier('This is a good movie.')
+print(classifier('This is a good movie.'))

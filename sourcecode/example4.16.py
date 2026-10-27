@@ -25,7 +25,7 @@ def build_autoencoder(img_shape, code_size):
       # The decoder
       decoder = Sequential()
       decoder.add(InputLayer((code_size,)))
-      decoder.add(Dense(np.prod(img_shape)))
+      decoder.add(Dense(int(np.prod(img_shape))))
       decoder.add(Reshape(img_shape))
 
       return encoder, decoder

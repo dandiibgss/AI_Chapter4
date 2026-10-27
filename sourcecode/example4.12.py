@@ -18,7 +18,8 @@ model = mobilenet.MobileNet(weights='imagenet')
 #model = inception_v3.InceptionV3(weights='imagenet')
 print(model.summary())
 
-img_path = 'Elephant.jpg'
+import os
+img_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Elephant.jpg')
 img = image.load_img(img_path, target_size=(224, 224))
 x = image.img_to_array(img)
 x = np.expand_dims(x, axis=0)
@@ -28,6 +29,6 @@ processed_image = mobilenet.preprocess_input(x)
 #processed_image = inception_v3.preprocess_input(x)
 
 # prediction
-predictions = model.predict(x)
+predictions = model.predict(processed_image)
 results = decode_predictions(predictions)
 print(results)

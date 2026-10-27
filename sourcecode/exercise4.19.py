@@ -1,5 +1,7 @@
 # Exercise 4.19 - Sentiment analysis dengan beberapa kalimat positif & negatif
 # pip install transformers torch
+import os
+os.environ["USE_TF"] = "0"
 from transformers import pipeline
 classifier = pipeline('sentiment-analysis')
 

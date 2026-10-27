@@ -1,7 +1,7 @@
 # Example 4.15
 #https://pypi.org/project/image-classifiers/
 
-!pip install image-classifiers
+# pip install image-classifiers
 from keras.applications.imagenet_utils import decode_predictions
 from keras.applications.imagenet_utils import preprocess_input
 from classification_models.keras import Classifiers
@@ -20,9 +20,15 @@ sz = 224
 model = clf(input_shape=(sz,sz,3), weights='imagenet', classes=1000)
 
 model.summary()
+
+camera = cv2.VideoCapture(0)
+image_size = sz
 while True:
 
         ret, cam_frame = camera.read()
+        if not ret:
+               print('Webcam tidak terbaca')
+               break
         frame= cv2.resize(cam_frame, (image_size, image_size))
         image = np.asarray(frame)
         image = np.expand_dims(image, 0)

@@ -3,8 +3,9 @@
 # Butuh file Elephant.jpg di folder yang sama (upload ke Colab)
 from keras.applications.vgg19 import VGG19
 from keras.applications.vgg19 import preprocess_input
-from keras.preprocessing.image import load_img
-from keras.preprocessing.image import img_to_array
+from keras.utils import load_img
+from keras.utils import img_to_array
+import os
 from keras.models import Model
 import matplotlib.pyplot as plt
 from numpy import expand_dims
@@ -34,7 +35,7 @@ model = Model(inputs=model.inputs, outputs=model.layers[n].output)
 model.summary()
 
 # load the image with the required shape
-img = load_img(r'D:\KULIAH\SEMESTER 5\AI\chapter4\sourecode\Elephant.jpg', target_size=(224, 224))
+img = load_img(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Elephant.jpg'), target_size=(224, 224))
 img = img_to_array(img)
 img = expand_dims(img, axis=0)
 img = preprocess_input(img)

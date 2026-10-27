@@ -7,7 +7,8 @@ import numpy as np
 
 model = VGG16(weights='imagenet')
 
-img_path = 'Elephant.jpg'
+import os
+img_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Elephant.jpg')
 img = image.load_img(img_path, target_size=(224, 224))
 x = image.img_to_array(img)
 x = np.expand_dims(x, axis=0)
